@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --void: #050308;
+  --ink: #f4eede;
+  --glow: #ffe9c7;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--void);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Film grain overlay — keeps the glass jewels from looking flat/digital */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* A single kaleidoscope wedge: a thin pie-slice clipped from the shared source */
+.wedge {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  /* 24 segments => 15deg each => half-angle 7.5deg => x offset tan(7.5)*50 = 6.58% */
+  clip-path: polygon(50% 50%, 43.42% 0, 56.58% 0);
+}
+
+/* The shared "object cell" every wedge reflects — vivid jewel shards.
+   Blobs are pushed toward the upper half (the slice's visible span) and kept
+   compact so adjacent mirrored wedges meet in sharp, faceted seams. */
+.source {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(18% 18% at 50% 8%, #ff3d8b 0%, transparent 58%),
+    radial-gradient(16% 16% at 40% 20%, #ffd23d 0%, transparent 56%),
+    radial-gradient(20% 20% at 58% 26%, #18e8c6 0%, transparent 56%),
+    radial-gradient(22% 22% at 46% 38%, #7b4bff 0%, transparent 56%),
+    radial-gradient(18% 18% at 56% 50%, #2f8bff 0%, transparent 56%),
+    radial-gradient(20% 20% at 44% 62%, #ff6a2d 0%, transparent 56%),
+    radial-gradient(24% 24% at 52% 80%, #c031ff 0%, transparent 58%),
+    radial-gradient(40% 40% at 50% 50%, #10071f 0%, transparent 80%);
+  filter: saturate(1.5) contrast(1.1);
+}
