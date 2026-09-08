@@ -60,7 +60,8 @@ export default function PookieHome() {
       {/* Footer */}
       <footer className="border-t border-[#e9d9d3] px-6 py-10 text-center text-[15px] text-[#8b7a72]">
         <div className="flex justify-center gap-6" style={hand}>
-          <Link href="/privacy" className="text-lg hover:text-[#F2708F]">Privacy</Link>
+          <Link href="/privacy-policy" className="text-lg hover:text-[#F2708F]">Privacy</Link>
+          <Link href="/data-policy" className="text-lg hover:text-[#F2708F]">Data</Link>
           <Link href="/terms" className="text-lg hover:text-[#F2708F]">Terms</Link>
           <Link href="/support" className="text-lg hover:text-[#F2708F]">Support</Link>
         </div>
