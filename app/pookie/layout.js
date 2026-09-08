@@ -22,6 +22,8 @@ export const viewport = {
 export default function PookieLayout({ children }) {
   return (
     <div className={`${gaegu.variable} ${nunito.variable}`} style={{ fontFamily: 'var(--font-nunito), system-ui, sans-serif' }}>
+      {/* apex globals.css locks the viewport (overflow:hidden, dark bg) — undo it for Pookie pages */}
+      <style dangerouslySetInnerHTML={{ __html: 'html,body{overflow:auto !important;height:auto !important;background:#FDF2EE !important;color:#5B4A42 !important;}' }} />
       {children}
     </div>
   );
