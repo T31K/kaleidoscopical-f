@@ -8,3 +8,7 @@ npm-debug.log*
 .env*
 .vercel
 next-env.d.ts
+
+# OpenNext / Cloudflare build output
+.open-next/
+.wrangler/
